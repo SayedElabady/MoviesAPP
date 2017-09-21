@@ -29,7 +29,7 @@ import mobilestudio.io.core.moviesapp.model.Movie;
 
 public class MainPresenter implements MainContract.Presenter {
     MainContract.View view;
-    private final String API_KEY = "f21cbdbeb6002cb0247cb93d8865f28a";
+    private final String API_KEY = "%%%%";
     private final String BASE_API_URL = "http://api.themoviedb.org/3/movie/";
     private final String PARAM_API = "api_key";
     private final static String POSTER_BASE_URL = "http://image.tmdb.org/t/p/w500/";
