@@ -9,7 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context="mobilestudio.io.core.moviesapp.detail.DetailsActivity">
+    tools:context="com.example.sayed.moviesapp.detail.DetailsActivity">
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -71,6 +71,11 @@
                 android:textSize="20sp"
                 android:text="Test"/>
         </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star_border_black_24dp"
+            android:id="@+id/fav_button"/>
 
     </LinearLayout>
     <View
@@ -79,15 +84,28 @@
         android:paddingTop="10dp"
 
         android:background="#e0e0e0"/>
-    <ScrollView
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/reviews"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="1">
-    <TextView
-        android:id="@+id/overview"
+        android:layout_weight="1"
+        />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="#e0e0e0"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/trailers"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="30dp"/>
-    </ScrollView>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+</LinearLayout>
 </LinearLayout>
 </ScrollView>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MoviesAPP</string>
+    <string name="youtube_base_url">https://www.youtube.com/watch?v=</string>
+    <string name="add_to_favourite">Add to Favourite</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="favourite">Favourite</string>
 </resources>
