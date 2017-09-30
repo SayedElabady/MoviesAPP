@@ -9,12 +9,10 @@ import io.reactivex.schedulers.Schedulers;
 import com.example.sayed.moviesapp.model.Review;
 import com.example.sayed.moviesapp.model.Trailer;
 
-/**
- * Created by Sayed on 9/23/2017.
- */
+
 
 public class ApiController {
-    private static final String API_KEY = "XXXX";
+    private static final String API_KEY = "f21cbdbeb6002cb0247cb93d8865f28a";
 
     public static Observable<List<Review>> getMovieReview(String id) {
         return ApiClient.getClient()

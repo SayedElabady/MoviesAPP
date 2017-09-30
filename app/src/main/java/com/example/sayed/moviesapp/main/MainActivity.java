@@ -21,7 +21,9 @@ import com.example.sayed.moviesapp.model.Movie;
 public class MainActivity extends AppCompatActivity implements MainContract.View {
     private static final String POPULAR_SORT = "popular";
     private static final String TOP_RATED_SORT = "top_rated";
+    private static final String FAVOURITE_SORT = "Favourite";
 
+    private static String currentState = POPULAR_SORT;
     MainContract.Presenter presenter;
     ArrayList<Movie> list;
     MainAdapter adapter;
@@ -42,6 +44,19 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if (currentState == FAVOURITE_SORT) {
+            presenter.updateGrid(FAVOURITE_SORT);
+        }
+        if (currentState == POPULAR_SORT) {
+            presenter.updateGrid(POPULAR_SORT);
+        } else if (currentState == TOP_RATED_SORT) {
+            presenter.updateGrid(TOP_RATED_SORT);
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
@@ -49,11 +64,14 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.popular) {
+            currentState = POPULAR_SORT;
             presenter.updateGrid(POPULAR_SORT);
         } else if (item.getItemId() == R.id.top_rated) {
+            currentState = TOP_RATED_SORT;
             presenter.updateGrid(TOP_RATED_SORT);
-        }else if (item.getItemId() == R.id.favourite){
-            presenter.updateGrid(getString(R.string.favourite));
+        } else if (item.getItemId() == R.id.favourite) {
+            currentState = FAVOURITE_SORT;
+            presenter.updateGrid(FAVOURITE_SORT);
         }
 
 
