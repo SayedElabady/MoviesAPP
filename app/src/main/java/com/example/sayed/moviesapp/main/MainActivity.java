@@ -3,6 +3,7 @@ package com.example.sayed.moviesapp.main;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     MainContract.Presenter presenter;
     ArrayList<Movie> list;
     MainAdapter adapter;
+    GridView gridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +36,15 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         setContentView(R.layout.activity_main);
         presenter = new MainPresenter(this);
         presenter.setView(this);
-        GridView gridView = (GridView) findViewById(R.id.grid_view);
-
-        list = new ArrayList<>();
+        gridView = (GridView) findViewById(R.id.grid_view);
+        if (savedInstanceState != null)
+            list = (ArrayList) savedInstanceState.getSerializable("gridItems");
+        else
+            list = new ArrayList<>();
         adapter = new MainAdapter(this, list, presenter);
         gridView.setAdapter(adapter);
-        presenter.updateGrid(POPULAR_SORT);
+        if(savedInstanceState == null)
+        presenter.updateGrid(currentState);
 
     }
 
@@ -55,6 +60,15 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
             presenter.updateGrid(TOP_RATED_SORT);
         }
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("gridItems", list);
+
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
