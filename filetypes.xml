@@ -12,6 +12,7 @@
       <mapping ext="prc" type="DBN-PSQL" />
       <mapping ext="vw" type="DBN-SQL" />
       <mapping ext="db" type="DBN-SQL" />
+      <mapping pattern="xml" type="PLAIN_TEXT" />
       <mapping ext="cml" type="XML" />
     </extensionMap>
   </component>
